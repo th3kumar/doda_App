@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <!-- Add an ImageView to display the selected image -->
+    <ImageView
+        android:id="@+id/drawingImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:padding="20dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/example_drawing" />
+
+    <!-- Add an EditText to allow the user to enter the drawing title -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/drawingTitleTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="@string/drawing_title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/drawingTitleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Add a positive button to save the drawing -->
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/save" />
+
+</LinearLayout>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">doda</string>
+    <string name="project_activity_title">Project Activity Title</string>
+    <string name="save">Save</string>
+    <string name="drawing_title">Drawing title</string>
+    <string name="close">Close</string>
+</resources>

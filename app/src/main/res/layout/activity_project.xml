@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.ProjectActivity">
+
+
+    <!-- Add a Toolbar to display the title of the activity -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        app:title="@string/project_activity_title"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@drawable/ic_back_arrow" />
+
+    <!-- Add a RecyclerView to display the list of drawings -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/drawingsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:visibility="gone" />
+
+    <!-- Add a TextView to display a message when there are no drawings to display -->
+    <TextView
+        android:id="@+id/noDrawingsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_drawings"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:visibility="gone"
+        android:padding="16dp"/>
+
+    <!-- Add a FloatingActionButton to allow the user to add new drawings -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addDrawingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/teal_700"
+        app:tint="@color/white" />
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
