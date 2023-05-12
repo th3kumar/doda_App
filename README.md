@@ -3,6 +3,8 @@
 
 
 This is a drawing app that allows users to create and manage drawings. Users can create new drawings, add markers to the drawings, and view details of each drawing.
+![collage](https://github.com/th3kumar/doda_App/assets/72141924/d22b359d-bf01-4514-bd3d-8f60914c8af0)
+
 
 ## Features
 
