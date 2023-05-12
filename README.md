@@ -25,14 +25,33 @@ This is a drawing app that allows users to create and manage drawings. Users can
 - Material Design Components: UI components and design guidelines for a modern and intuitive user experience
 
 ## Architecture
+The app follows the Model-View-ViewModel (MVVM) architecture pattern. The key components of the architecture are:
 
-The app follows the Model-View-ViewModel (MVVM) architecture pattern, which separates the app's logic into distinct layers:
+#Model
+-The data layer of the app that includes entities, data access objects (DAOs), and the database.
 
-- Model: Represents the data and business logic of the app, including the entities and database operations.
-- View: Handles the UI and user interactions, displaying data from the ViewModel and forwarding user actions to it.
-- ViewModel: Manages the state of the UI, retrieves and provides data to the View, and handles user interactions.
+-Entities: The data models that represent the core data structures in the app. In this project, we have two entities: Drawing and Marker.
 
-The architecture allows for better separation of concerns, testability, and maintainability of the codebase.
+```kotlin
+@Entity(tableName = "drawings")
+data class Drawing(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val title: String,
+    val imageUri: String,
+    val creationTime: Long,
+    var markerCount: Int
+)
+
+@Entity(tableName = "markers", foreignKeys = [ForeignKey(entity = Drawing::class, parentColumns = ["id"], childColumns = ["drawingId"], onDelete = ForeignKey.CASCADE)])
+data class Marker(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val drawingId: Int,
+    var title: String,
+    val posX: Float,
+    val posY: Float,
+    val creationTime: Long
+)
+
 
 ## Getting Started
 
