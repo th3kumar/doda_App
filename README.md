@@ -27,7 +27,7 @@ This is a drawing app that allows users to create and manage drawings. Users can
 ## Architecture
 The app follows the Model-View-ViewModel (MVVM) architecture pattern. The key components of the architecture are:
 
-#Model
+# Model
 -The data layer of the app that includes entities, data access objects (DAOs), and the database.
 
 -Entities: The data models that represent the core data structures in the app. In this project, we have two entities: Drawing and Marker.
@@ -53,7 +53,63 @@ data class Marker(
 )
 ```
 
+-Data Access Objects (DAOs): The interfaces or classes that define the methods to interact with the database. They provide methods for performing CRUD (Create, Read, Update, Delete) operations on the entities. In this project, we have DAOs for Drawing and Marker
 
+```kotlin
+@Dao
+interface DrawingDao {
+    @Query("SELECT * FROM drawings")
+    fun getAllDrawings(): LiveData<List<Drawing>>
+    
+    // Other DAO methods omitted for brevity
+}
+
+@Dao
+interface MarkerDao {
+    @Query("SELECT * FROM markers WHERE drawingId = :drawingId")
+    fun getMarkersForDrawing(drawingId: Int): LiveData<List<Marker>>
+    
+    // Other DAO methods omitted for brevity
+}
+
+```
+# Database:
+The database that holds the app's data. It is an abstraction layer on top of the underlying storage. In this project, we use Room Persistence Library, which is an SQLite object mapping library, as the database.
+
+```kotlin
+@Database(entities = [Drawing::class, Marker::class], version = 1, exportSchema = false)
+abstract class DrawingDatabase : RoomDatabase() {
+    abstract fun drawingDao(): DrawingDao
+    abstract fun markerDao(): MarkerDao
+
+    // Database creation and migration code omitted for brevity
+}
+```
+# View
+The UI layer of the app that includes activities, fragments, and XML layout files.
+
+Activities and Fragments: The UI components responsible for displaying the app's screens and handling user interactions. In this project, we have the ProjectActivity as the main activity.
+
+```kotlin
+class ProjectActivity : AppCompatActivity() {
+    // Activity implementation omitted for brevity
+}
+```
+Layout Files: The XML files that define the UI layout and components. In this project, we have layout files such as activity_project.xml and item_drawing.xml.
+# ViewModel
+- The intermediary layer between the View and the Model that provides data to the UI and handles user interactions. It abstracts the UI from the underlying data sources and business logic.
+
+DrawingViewModel: The ViewModel class that provides the necessary data for the ProjectActivity and handles data retrieval and updates.
+
+```kotlin
+
+class DrawingViewModel(private val repository: DrawingRepository) : ViewModel() {
+    val drawings: LiveData<List<Drawing>> = repository.getAllDrawings()
+    
+    // Other ViewModel methods omitted for brevity
+}
+```
+This architecture ensures separation of concerns and improves the maintainability and testability of the app by keeping the data, UI, and business logic
 
 ## Getting Started
 
