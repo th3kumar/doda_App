@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".activities.ProjectActivity">
+    tools:context="activities.ProjectActivity">
 
 
     <!-- Add a Toolbar to display the title of the activity -->
@@ -14,40 +14,45 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
+        app:titleCentered="true"
         app:title="@string/project_activity_title"
         app:titleTextColor="@color/white"
-        app:navigationIcon="@drawable/ic_back_arrow" />
+         />
 
     <!-- Add a RecyclerView to display the list of drawings -->
+
+
+    <!-- Add a FloatingActionButton to allow the user to add new drawings -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/drawingsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
-        android:visibility="gone" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Add a TextView to display a message when there are no drawings to display -->
-    <TextView
-        android:id="@+id/noDrawingsTextView"
+    <ImageView
+        android:id="@+id/emptyImageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/no_drawings"
-        android:textAlignment="center"
-        android:textSize="24sp"
         android:layout_marginTop="?attr/actionBarSize"
+        android:layout_height="wrap_content"
+        android:src="@drawable/empty_image"
         android:visibility="gone"
-        android:padding="16dp"/>
+        />
 
-    <!-- Add a FloatingActionButton to allow the user to add new drawings -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addDrawingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_margin="24dp"
         android:src="@drawable/ic_add"
         app:backgroundTint="@color/teal_700"
-        app:tint="@color/white" />
+        app:tint="@color/white"
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription" />
 
 
 

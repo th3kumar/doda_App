@@ -1,12 +1,12 @@
-package com.example.doda.activities
+package activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.doda.R
 
-class ProjectActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_project)
+        setContentView(R.layout.activity_main)
     }
 }
