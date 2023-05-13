@@ -54,6 +54,8 @@ data class Marker(
     val creationTime: Long
 )
 ```
+<img width="475" alt="Screenshot_20230513_012618" src="https://github.com/th3kumar/doda_App/assets/72141924/48bb848d-2927-4680-bbdc-9cf3ff0454cc">
+<img width="410" alt="Screenshot_20230513_012637" src="https://github.com/th3kumar/doda_App/assets/72141924/ef17b9e6-d309-4b0c-8e5e-93bccee0c113">
 
 -Data Access Objects (DAOs): The interfaces or classes that define the methods to interact with the database. They provide methods for performing CRUD (Create, Read, Update, Delete) operations on the entities. In this project, we have DAOs for Drawing and Marker
 
